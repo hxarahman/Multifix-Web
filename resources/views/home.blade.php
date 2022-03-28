@@ -1,23 +1,32 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
+@section('title')hi @stop
+@section('siteDesc')desc @stop
+@section('dashboard')active @stop
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+<!-- [ Main Content ] start -->
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
+<div class="pcoded-main-container">
+    <div class="pcoded-content">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+            <div class="page-block">
+                <div class="row align-items-center">
+                    <div class="col-md-12">
+                        <div class="page-header-title">
+                            <h5 class="m-b-10">Dashboard Analytics</h5>
                         </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html"><i class="feather icon-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="#!">Dashboard Analytics</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
+        <!-- [ breadcrumb ] end -->
     </div>
 </div>
-@endsection
+<!-- [ Main Content ] end -->
+
+@stop

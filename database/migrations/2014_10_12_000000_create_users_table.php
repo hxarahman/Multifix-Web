@@ -6,33 +6,28 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateUsersTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->text('image')->default('https://snack-code-uploads.s3.us-west-1.amazonaws.com/~asset/10d6a232729d3a4b722359614706d057');
-            $table->string('email')->unique();
-            $table->integer('phone')->nullable();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+            $table->bigIncrements('id');
+            //FULL NAME
+            $table->string('name')->nullable();
+            //EMAIL ADDRESS
+            $table->string('email')->nullable()->unique();
+            //PHONE NUMBER
+            $table->bigInteger('phone')->nullable();;
+            $table->string('password')->nullable();
+            
+            $table->datetime('email_verified_at')->nullable();
+            $table->string('remember_token')->nullable();
+            $table->boolean('verified')->default(0)->nullable();
+            $table->datetime('verified_at')->nullable();
+            $table->string('verification_token')->nullable();
+            $table->boolean('two_factor')->default(0)->nullable();
+            $table->string('two_factor_code')->nullable();
+            $table->datetime('two_factor_expires_at')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
-    }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('users');
     }
 }
